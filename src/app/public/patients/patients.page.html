@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Patients</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-card class='logo_card'>
+    <img class="logo_image" src={{logo}}>
+  </ion-card>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="ion-text-center title">
+    <h3>All Patients</h3>
+  </div>
+
+  <ion-card color="tertiary" class="patient_card" *ngFor="let patient of patients; index as i">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="3">
+          <img style="width:60px;height:60px" src="{{baseUrl+patient.image}}" alt="">
+        </ion-col>
+        <ion-col>
+          <ion-label (click)="detailsPatient(patient.id)">
+            <h4 class="h4">{{patient.fname +' '+patient.lname}}</h4>
+              Address: {{patient.city}} , {{patient.country}} <br>
+              Phone: {{patient.phone}}
+          </ion-label>
+        </ion-col>
+        <ion-col size="2">
+          <ion-button (click)="deleteConfirmation(patient.id)" fill="clear">
+            <ion-icon slot="end" color="danger" name="trash"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+  
+<div class="add_btn">
+  <ion-button expand="full" (click)="presentModal();"><ion-icon name="add-circle-outline"></ion-icon> <span class="btn_text">Add Patient</span> </ion-button>
+</div>
+
+</ion-content>
+
+<ion-tab-bar color="primary" slot="bottom">
+  <ion-tab-button (click)="actionSheet('home')">
+    <ion-label>Home</ion-label>
+    <ion-icon name="home"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button (click)="actionSheet('call')">
+    <ion-label>Call</ion-label>
+    <ion-icon name="call"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button  (click)="actionSheet('email')">
+    <ion-label>Email</ion-label>
+    <ion-icon name="mail"></ion-icon>
+  </ion-tab-button>
+  <ion-tab-button (click)="actionSheet('link')">
+    <ion-label>Website</ion-label>
+    <ion-icon name="globe"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button (click)="actionSheet('info')">
+    <ion-label>Info</ion-label>
+    <ion-icon name="information-circle-outline"></ion-icon>
+  </ion-tab-button>
+</ion-tab-bar>

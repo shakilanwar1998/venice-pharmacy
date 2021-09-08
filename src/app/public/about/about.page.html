@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>About</ion-title>
+  </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+  <ion-card *ngIf="pharmacy_id=='5'">
+    <ion-card-header class="ion-text-center" color="secondary">
+      <h6><strong>Venice Pharmacy</strong></h6>
+    </ion-card-header>
+    <ion-card-content >
+      <img src={{pharmacy.logo}}>
+      <p class="ion-text-center">
+        <b>Venice Pharmacy</b> <br>
+        76-3530 Rutherford Road
+        Woodbridge, Ontario, M1J 1G7<br>
+
+        <b>Phone:</b> 905 553 7546<br>
+        <b>Fax:</b> 905 553 7547<br>
+        <b>Pharmacy Hours:</b> <br>
+          Mon-Fri: 9am-6pm, Sat 9am-2pm
+        </p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="pharmacy_id=='6'">
+    <ion-card-header class="ion-text-center" color="secondary">
+      <h6><strong>Neighbour Care Pharmacy</strong></h6>
+    </ion-card-header>
+    <ion-card-content >
+      <img src={{pharmacy.logo}}>
+      <p class="ion-text-center">
+        <b>Neighbour Care Pharmacy</b> <br>
+        1357 Danforth Road,
+        Scarborough, Ontario, M1J 1G7 <br>
+        <b>Phone:</b> 647 352 2274 <br>
+        <b>Fax:</b> 647 352 2273<br>
+
+        <b>Pharmacy Hours:</b> <br>
+          Mon-Fri: 10:00am-6:00pm,
+          Sat 10:00am-2:00pm
+        </p>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
+<ion-tab-bar color="primary" slot="bottom">
+  <ion-tab-button (click)="actionSheet('home')">
+    <ion-label>Home</ion-label>
+    <ion-icon name="home"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button (click)="actionSheet('call')">
+    <ion-label>Call</ion-label>
+    <ion-icon name="call"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button  (click)="actionSheet('email')">
+    <ion-label>Email</ion-label>
+    <ion-icon name="mail"></ion-icon>
+  </ion-tab-button>
+  <ion-tab-button (click)="actionSheet('link')">
+    <ion-label>Website</ion-label>
+    <ion-icon name="globe"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button (click)="actionSheet('info')">
+    <ion-label>Info</ion-label>
+    <ion-icon name="information-circle-outline"></ion-icon>
+  </ion-tab-button>
+</ion-tab-bar>

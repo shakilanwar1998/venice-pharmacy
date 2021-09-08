@@ -1,0 +1,47 @@
+.green-text
+{
+  color:green;
+}
+
+.image-upload>input {
+  display: none;
+}
+
+.card_content, .form, .form-input, .pickup{
+  margin-top:4%;
+}
+.red-star {
+    color: red;
+}
+
+.label{
+  font-weight: bold;
+  padding:5%;
+}
+.title{
+  margin-bottom:3%;
+}
+
+
+.image-upload {}
+
+.image-upload img {
+    max-width: 65px !important;
+    margin: 15px auto;
+}
+
+ion-card.logo_card {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+form {}
+
+form ion-card {
+    margin-top: 15px !important;
+    margin-bottom: 15px !important;
+}
+
+form ion-list {
+    padding: 0 !important;
+}

@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-toolbar color='primary'>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Deals</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+  <div style="margin-bottom:5%;" class="ion-text-center">
+    <h2 style="color:green">{{pharmacy_name}}</h2>
+  </div>
+
+  <div style="margin-bottom:5%;" class="ion-text-center">
+    <h2 style="color:#cc6600">Coming Soon...</h2>
+  </div>
+</ion-content>
+
+
+<ion-tab-bar color="primary" slot="bottom">
+  <ion-tab-button (click)="actionSheet('home')">
+    <ion-label>Home</ion-label>
+    <ion-icon name="home"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button (click)="actionSheet('call')">
+    <ion-label>Call</ion-label>
+    <ion-icon name="call"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button  (click)="actionSheet('email')">
+    <ion-label>Email</ion-label>
+    <ion-icon name="mail"></ion-icon>
+  </ion-tab-button>
+  <ion-tab-button (click)="actionSheet('link')">
+    <ion-label>Website</ion-label>
+    <ion-icon name="globe"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button (click)="actionSheet('info')">
+    <ion-label>Info</ion-label>
+    <ion-icon name="information-circle-outline"></ion-icon>
+  </ion-tab-button>
+</ion-tab-bar>

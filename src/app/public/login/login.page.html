@@ -1,0 +1,45 @@
+
+<ion-button fill="clear" size='default' (click)="click()" expand="full"><ion-icon name="arrow-back"></ion-icon></ion-button>
+<ion-content padding>
+      <form #form="ngForm" (ngSubmit)="login(form)" method="post">
+          <ion-card class='login-card'>
+            <ion-row justify-content-center>
+              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                <ion-card-header color="secondary" class="title">
+                    <ion-card-subtitle class="ion-text-center">Log In</ion-card-subtitle>
+                </ion-card-header>
+                <div padding>
+                  <ion-item>
+                    <ion-label position="stacked">Email</ion-label>
+                    <ion-input ngModel name="email" type="email" required id="email"></ion-input>
+                  </ion-item>
+
+                  <ion-item>
+                    <ion-label position="stacked">Password</ion-label>
+                    <ion-input ngModel name="password" type="password" required id="password"></ion-input>
+                  </ion-item>
+
+                  <ion-item lines="none">
+                    <ion-checkbox name="remember" [(ngModel)]="remember" color="primary" slot="start"></ion-checkbox>
+                    <ion-label>Remember me</ion-label>
+                  </ion-item>
+                </div>
+
+                <div padding>
+                  <ion-button size="large" type="submit" expand="block">Login</ion-button>
+                </div>
+
+                <div padding>
+                  <ion-card-subtitle class="ion-text-center">Forgot Password ? <span (click)="forgotPassword()" class="reset">Reset</span></ion-card-subtitle>
+                </div>
+
+
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </form>
+
+          <p text-center>Don't have a account?</p>
+  <ion-button expand="full" color="danger" (click)="regOnClick()">Register</ion-button>
+
+</ion-content>

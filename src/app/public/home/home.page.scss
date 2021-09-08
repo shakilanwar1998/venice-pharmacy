@@ -1,0 +1,125 @@
+.body{
+  background:#03A9F4;
+}
+ion-card{
+  height:110px;
+  background:#03A9F4 !important;
+}
+
+img{
+  height: 100%;
+  display: block;
+  vertical-align: middle;
+}
+
+
+.ion-color-primary {
+  color: #03A9F4 !important;
+}
+
+
+ion-icon {
+  color: #fff !important;
+}
+
+
+
+.ion-color-primary  {
+  color: #ffffff !important;
+}
+
+
+ion-card-header {
+  padding-top: 25px;
+}
+
+ion-content {}
+
+ion-content ion-card.logo {
+  margin-top: 20px;
+}
+
+
+ion-card {
+  -webkit-box-shadow:  0px 0px 12px -5px rgba(0,0,0,0.75) !important;
+  -moz-box-shadow:  0px 0px 12px -5px rgba(0,0,0,0.75) !important;
+  box-shadow:  0px 0px 12px -5px rgba(0,0,0,0.75) !important;
+}
+
+
+ion-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hobdy-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+}
+
+ion-grid {
+  z-index: 2;
+  position: relative;
+}
+
+ion-card.logo {
+  position: relative;
+  z-index: 2;
+}
+
+.hobdy-bg .pp-bg {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.hobdy-bg .pp-bg img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  opacity: .25;
+}
+
+
+
+
+
+
+
+
+.icon-img {
+  position: relative;
+  height: 60px;
+  width: 60px;
+  background-color: #03a9f4;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+ion-card-header.md.hydrated {}
+
+ion-card.hydrated {
+  background-color: #ffffffc4 !important;
+  box-shadow: none !important;
+  border: 1px solid #03a9f4;
+  text-align: center;
+  margin-top: 20px;
+}
+
+ion-card-subtitle {
+  color: #000 !important;
+}
+
+ion-card-header.md.hydrated {
+  padding: 13px 0px 0px;
+}
+
+ion-card.logo.sc-ion-card-md-h.sc-ion-card-md-s.md.hydrated {
+  margin-top: 35px;
+}

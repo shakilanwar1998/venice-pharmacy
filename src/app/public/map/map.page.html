@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Location</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="pharmacy.pharmacy_name">
+  <ion-card>
+    <ion-card-header class="title" color="secondary">
+      <ion-card-subtitle class="ion-text-center">{{pharmacy.pharmacy_name}}</ion-card-subtitle>
+    </ion-card-header>
+
+      <ion-card-content>
+        <div class="map">
+          <iframe *ngIf="id == 6" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2882.3991417558905!2d-79.24636318463044!3d43.74380757911827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d4d14d836d504d%3A0x28de3ef4f641aaf8!2sNeighbour%20Care%20Pharmacy!5e0!3m2!1sen!2sbd!4v1573580525656!5m2!1sen!2sbd" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+
+          <iframe *ngIf="id == 5" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2878.3329952910085!2d-79.55135468462747!3d43.82819297911571!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b2f5d2e6b284b%3A0x5d7ab5ddbf4d3223!2sVenice%20Pharmacy!5e0!3m2!1sen!2sbd!4v1573580430256!5m2!1sen!2sbd" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+        </div>
+      </ion-card-content>
+
+  </ion-card>
+</ion-content>
+
+<ion-tab-bar color="primary" slot="bottom">
+  <ion-tab-button (click)="actionSheet('home')">
+    <ion-label>Home</ion-label>
+    <ion-icon name="home"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button (click)="actionSheet('call')">
+    <ion-label>Call</ion-label>
+    <ion-icon name="call"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button  (click)="actionSheet('email')">
+    <ion-label>Email</ion-label>
+    <ion-icon name="mail"></ion-icon>
+  </ion-tab-button>
+  <ion-tab-button (click)="actionSheet('link')">
+    <ion-label>Website</ion-label>
+    <ion-icon name="globe"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button (click)="actionSheet('info')">
+    <ion-label>Info</ion-label>
+    <ion-icon name="information-circle-outline"></ion-icon>
+  </ion-tab-button>
+</ion-tab-bar>

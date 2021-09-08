@@ -1,0 +1,154 @@
+<ion-header>
+
+    <ion-toolbar color='primary'>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Transfer Rx</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+  <ion-card class='logo_card'>
+    <img class="logo_image" src={{logo}}>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header color="secondary" class="title">
+        <ion-card-subtitle class="ion-text-center">Select Patient</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="9">
+            <ion-select [(ngModel)]="patient" (ionChange)="patientSelect(patient)" (ionChange)="loadOption()" class="card-text" okText="Okay" cancelText="Dismiss" placeholder="Please select a Patient">
+              <ion-select-option value="{{patient.id}}" *ngFor="let patient of patients">{{patient.fname+' '+patient.lname}}</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col>
+            <ion-button size="default" fill="clear" (click)="presentModal()">
+             <ion-icon slot="icon-only" name="add"></ion-icon>
+           </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+
+  <ion-card *ngIf="pharmacy.pharmacy_name">
+    <ion-card-header color="secondary">
+    <ion-card-subtitle class="ion-text-center">Transfer From</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content class="card_content">
+      Please transfer the following medication to <h2 style="color:green">{{pharmacy.pharmacy_name}}</h2>
+
+      <div class="form">
+        From the following pharmacy
+
+      <form #form="ngForm" (ngSubmit)="submitForm(form)" method="post">
+        <div class="form-input">
+          <ion-item>
+            <ion-label position="stacked">Pharmacy Name <span class="red-star">*</span></ion-label>
+            <ion-input name="pharmacy_name" ngModel></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Phone Number <span class="red-star">*</span></ion-label>
+            <ion-input name="phone" ngModel></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Address <span class="red-star">*</span></ion-label>
+            <ion-textarea name="address" ngModel></ion-textarea>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Medication Name / Prescription Number <span class="red-star">*</span></ion-label>
+            <ion-input name="prescription_number" ngModel></ion-input>
+          </ion-item>
+
+          <div class="pickup">
+            <ion-label class="label">Pickup Time <span class="red-star">*</span></ion-label>
+            <ion-grid>
+              <ion-row>
+                <ion-col size="3">
+                  <ion-button (click)="timeBtnClick('15m');changeColor('15min')" id='15min' color="secondary" expand="block">
+                    <ion-label>15 min</ion-label>
+                  </ion-button>
+                </ion-col>
+                <ion-col size="3">
+                  <ion-button (click)="timeBtnClick('30m');changeColor('30min')" id='30min' color="secondary" expand="block">
+                    <ion-label>30 min</ion-label>
+                  </ion-button>
+                </ion-col>
+                <ion-col size="3">
+                  <ion-button (click)="timeBtnClick('1h');changeColor('1hour')" id='1hour' color="secondary" expand="block">
+                    <ion-label>1 hour</ion-label>
+                  </ion-button>
+                </ion-col>
+                <ion-col size="3">
+                  <ion-button (click)="timeBtnClick('4h');changeColor('4hour')" id='4hour' color="secondary" expand="block">
+                    <ion-label>4 hour</ion-label>
+                  </ion-button>
+                </ion-col>
+                <ion-col size="3">
+                  <ion-button (click)="timeBtnClick('1d');changeColor('1day')" id="1day" color="secondary" expand="block">
+                    <ion-label>1 day</ion-label>
+                  </ion-button>
+                </ion-col>
+
+              </ion-row>
+            </ion-grid>
+
+            <div class="pickup">
+              <ion-item lines="none">
+                <ion-label>Select manually</ion-label>
+                <ion-datetime id="pickup" name="pickup_time" ngModel displayFormat="DD MMMM YYYY HH:mm" max="2020-12-12"  placeholder="Select time"></ion-datetime>
+              </ion-item>
+            </div>
+          </div>
+          <ion-item lines="none">
+            <ion-checkbox name="delivery" [(ngModel)]="delivery" (ionChange)="updateDelivery()" color="primary" slot="start"></ion-checkbox>
+            <ion-label>Delivery</ion-label>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="stacked">Special Instractions <span class="red-star">*</span></ion-label>
+            <ion-textarea name="instructions" ngModel></ion-textarea>
+          </ion-item>
+
+          <div padding>
+            <ion-button size="medium" type="submit" expand="block">Submit</ion-button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+    </ion-card-content>
+</ion-card>
+
+</ion-content>
+
+<ion-tab-bar color="primary" slot="bottom">
+  <ion-tab-button (click)="actionSheet('home')">
+    <ion-label>Home</ion-label>
+    <ion-icon name="home"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button (click)="actionSheet('call')">
+    <ion-label>Call</ion-label>
+    <ion-icon name="call"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button  (click)="actionSheet('email')">
+    <ion-label>Email</ion-label>
+    <ion-icon name="mail"></ion-icon>
+  </ion-tab-button>
+  <ion-tab-button (click)="actionSheet('link')">
+    <ion-label>Website</ion-label>
+    <ion-icon name="globe"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button (click)="actionSheet('info')">
+    <ion-label>Info</ion-label>
+    <ion-icon name="information-circle-outline"></ion-icon>
+  </ion-tab-button>
+</ion-tab-bar>

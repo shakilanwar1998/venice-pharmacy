@@ -1,0 +1,82 @@
+.location-card{
+  padding:20px;
+  text-align: center;
+  font-size:15px;
+}
+
+
+
+h3.pselect-title {
+  margin-top: 25px;
+}
+
+
+ion-card {
+  margin-bottom: 15px !important;
+}
+
+
+.ion-color-primary  {
+  color: #ffffff !important;
+}
+
+
+ion-card.single-location-card {
+  position: relative;
+  max-width: 365px;
+  margin: 0px auto;
+}
+
+ion-card.single-location-card img {
+  max-width: 235px;
+  margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+ion-content {
+  position: relative;
+}
+
+.lobdy-bg {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+ion-list {
+  z-index: 2;
+  position: relative;
+}
+
+.lobdy-bg .pp-bg {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.lobdy-bg .pp-bg img 
+{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  opacity: .25;
+}
+
+.title {
+  position: relative;
+  z-index: 2;
+  background-color: #fff;
+}

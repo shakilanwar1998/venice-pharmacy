@@ -1,0 +1,158 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Patient Information</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+    <ion-content *ngIf="patient.fname">
+      <div class="header">
+        <ion-row style="align-items:center;padding-top:20px;padding-left:10px;">
+          <ion-col size="4">
+            <ion-img style="width:100px" class="user-avatar round" src="{{baseUrl+patient.image}}"></ion-img>
+          </ion-col>
+          <ion-col size="8">
+              <h3>{{patient.fname+' '+patient.lname}}</h3>
+              <p style="color:#ddd">{{patient.city}} , {{patient.country}}</p>
+          </ion-col>
+        </ion-row>
+      </div>
+
+
+      <ion-card>
+        <ion-card-header (click)="toggleDetails('prescription_details')" class="title" color="secondary">
+          <ion-card-subtitle class="ion-text-center">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="3">
+                  <ion-icon name="document" size="default"></ion-icon>
+                </ion-col>
+                <ion-col size="7">
+                  <label>Prescriptions</label>
+                </ion-col>
+                <ion-col size="2">
+                  <ion-icon name="{{prescription_details.icon}}" size="default"></ion-icon>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content *ngIf="prescription_details.showDetails">
+          <div class="content">
+            <ion-list>
+              <ion-item detail lines="none" (click)="clickPrescription(prescription.id)" *ngFor="let prescription of prescriptions; index as i">
+                  <ion-grid>
+                    <ion-row>
+                       <ion-col size="2" size-sm>
+                         <ion-icon size="large" name="document"></ion-icon>
+                       </ion-col>
+                       <ion-col size="5" size-sm>
+                         Prescription ID:
+                       </ion-col>
+                       <ion-col size="3" size-sm>
+                         {{prescription.prescription_id}}
+                       </ion-col>
+                     </ion-row>
+                  </ion-grid>
+              </ion-item>
+
+            </ion-list>
+          </div>
+        </ion-card-content>
+      </ion-card>
+
+
+      <ion-card>
+        <ion-card-header (click)="toggleDetails('patient_detils')" class="title" color="secondary">
+          <ion-card-subtitle class="ion-text-center">
+            <ion-grid>
+              <ion-row>
+                <ion-col size="3">
+                  <ion-icon name="person" size="default"></ion-icon>
+                </ion-col>
+                <ion-col size="7">
+                  <label>Patient Information</label>
+                </ion-col>
+                <ion-col size="2">
+                  <ion-icon name="{{patient_detils.icon}}" size="default"></ion-icon>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content *ngIf="patient_detils.showDetails">
+
+            <ion-item>
+              <ion-label position="fixed"><b>Full Name : </b></ion-label>
+              <ion-label>{{patient.fname+' '+patient.lname}}</ion-label>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="fixed"><b>Mobile : </b></ion-label>
+              <ion-label>{{patient.phone}}</ion-label>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="fixed"><b>Birth Date : </b></ion-label>
+              <ion-label>{{dob}}</ion-label>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="fixed"><b>Country : </b></ion-label>
+              <ion-label>{{patient.country}}</ion-label>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="fixed"><b>City : </b></ion-label>
+              <ion-label>{{patient.city}}</ion-label>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="fixed"><b>Province : </b></ion-label>
+              <ion-label>{{patient.province}}</ion-label>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="fixed"><b>Street : </b></ion-label>
+              <ion-label>{{patient.street}}</ion-label>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="fixed"><b>Post Code : </b></ion-label>
+              <ion-label>{{patient.health_card_no}}</ion-label>
+            </ion-item>
+
+        </ion-card-content>
+      </ion-card>
+
+    </ion-content>
+
+
+    <ion-tab-bar color="primary" slot="bottom">
+      <ion-tab-button (click)="actionSheet('home')">
+        <ion-label>Home</ion-label>
+        <ion-icon name="home"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="actionSheet('call')">
+        <ion-label>Call</ion-label>
+        <ion-icon name="call"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button  (click)="actionSheet('email')">
+        <ion-label>Email</ion-label>
+        <ion-icon name="mail"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button (click)="actionSheet('link')">
+        <ion-label>Website</ion-label>
+        <ion-icon name="globe"></ion-icon>
+      </ion-tab-button>
+
+      <ion-tab-button (click)="actionSheet('info')">
+        <ion-label>Info</ion-label>
+        <ion-icon name="information-circle-outline"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>

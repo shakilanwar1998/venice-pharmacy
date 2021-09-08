@@ -1,0 +1,146 @@
+<ion-header>
+    <ion-toolbar color='primary'>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Refill Prescription</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+  <ion-card class='logo_card'>
+    <img class="logo_image" src={{logo}}>
+  </ion-card>
+  <form #form="ngForm" (ngSubmit)="submitForm(form)" method="post" enctype="multipart/form-data">
+  <ion-card>
+    <ion-card-header color="secondary" class="title">
+        <ion-card-subtitle class="ion-text-center">Select Patient</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="9">
+            <ion-select (ionChange)="patientSelect()" [(ngModel)]="patient" name="patient" class="card-text" okText="Okay" cancelText="Dismiss" placeholder="Please select a Patient">
+              <ion-select-option value="{{patient.id}}" *ngFor="let patient of patients">{{patient.fname+' '+patient.lname}}</ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col>
+            <ion-button size="default" fill="clear" (click)="presentModal()">
+             <ion-icon slot="icon-only" name="add"></ion-icon>
+           </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+<div *ngIf="patient">
+  <ion-card>
+    <ion-card-header color="secondary" class="title">
+        <ion-card-subtitle class="ion-text-center">Choose a RX</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-select name="rx_id" class="card-text" okText="Okay" cancelText="Dismiss" placeholder="Please select a RX">
+        <ion-select-option value="{{prescription.prescription_id}}" *ngFor="let prescription of prescriptions">{{prescription.prescription_id}}</ion-select-option>
+      </ion-select>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="welcome-card">
+    <ion-card-header color="secondary" class="title">
+        <ion-card-subtitle class="ion-text-center">Enter Rx Number Manually</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+
+      <ion-item>
+        <ion-label position="stacked">Enter Rx Number / Write Your Medication Name <span class="red-star">*</span></ion-label>
+        <ion-input name="rx_id" ngModel></ion-input>
+      </ion-item>
+
+      <div style="margin-top:10%;">
+        <div class="pickup">
+          <ion-label class="label">Pickup Time <span class="red-star">*</span></ion-label>
+          <ion-grid>
+            <ion-row>
+              <ion-col size="3">
+                <ion-button (click)="timeBtnClick('15m');changeColor('15min')" id='15min' color="secondary" expand="block">
+                  <ion-label>15 min</ion-label>
+                </ion-button>
+              </ion-col>
+              <ion-col size="3">
+                <ion-button (click)="timeBtnClick('30m');changeColor('30min')" id='30min' color="secondary" expand="block">
+                  <ion-label>30 min</ion-label>
+                </ion-button>
+              </ion-col>
+              <ion-col size="3">
+                <ion-button (click)="timeBtnClick('1h');changeColor('1hour')" id='1hour' color="secondary" expand="block">
+                  <ion-label>1 hour</ion-label>
+                </ion-button>
+              </ion-col>
+              <ion-col size="3">
+                <ion-button (click)="timeBtnClick('4h');changeColor('4hour')" id='4hour' color="secondary" expand="block">
+                  <ion-label>4 hour</ion-label>
+                </ion-button>
+              </ion-col>
+              <ion-col size="3">
+                <ion-button (click)="timeBtnClick('1d');changeColor('1day')" id="1day" color="secondary" expand="block">
+                  <ion-label>1 day</ion-label>
+                </ion-button>
+              </ion-col>
+
+            </ion-row>
+          </ion-grid>
+
+          <div class="pickup">
+            <ion-item lines="none">
+              <ion-label>Select manually</ion-label>
+              <ion-datetime id="pickup" name="pickup_time" ngModel displayFormat="DD MMMM YYYY HH:mm" max="2020-12-12"  placeholder="Select time"></ion-datetime>
+            </ion-item>
+          </div>
+
+        </div>
+        <ion-item lines="none">
+          <ion-checkbox name="delivery" [(ngModel)]="delivery" (ionChange)="updateDelivery()" color="primary" slot="start"></ion-checkbox>
+          <ion-label>Delivery</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-textarea ngModel name="instructions" rows="6" cols="20" placeholder="Special Instructions"></ion-textarea>
+        </ion-item>
+
+          <div class="ion-padding">
+            <ion-button expand="block" type="submit" color="primary" class="ion-no-margin">Submit</ion-button>
+          </div>
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+  </div>
+</form>
+
+</ion-content>
+
+<ion-tab-bar color="primary" slot="bottom">
+  <ion-tab-button (click)="actionSheet('home')">
+    <ion-label>Home</ion-label>
+    <ion-icon name="home"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button (click)="actionSheet('call')">
+    <ion-label>Call</ion-label>
+    <ion-icon name="call"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button  (click)="actionSheet('email')">
+    <ion-label>Email</ion-label>
+    <ion-icon name="mail"></ion-icon>
+  </ion-tab-button>
+  <ion-tab-button (click)="actionSheet('link')">
+    <ion-label>Website</ion-label>
+    <ion-icon name="globe"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button (click)="actionSheet('info')">
+    <ion-label>Info</ion-label>
+    <ion-icon name="information-circle-outline"></ion-icon>
+  </ion-tab-button>
+</ion-tab-bar>

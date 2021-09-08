@@ -1,0 +1,57 @@
+<ion-button fill="clear" size='default' (click)="backClick()" expand="full">
+  <ion-icon name="arrow-back"></ion-icon>
+</ion-button>
+
+<ion-content padding>
+    <form #form="ngForm" (ngSubmit)="regForm(form)" method="post">
+    <ion-card class='reg-card'>
+      <ion-row justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <ion-card-header color="secondary" class="title">
+              <ion-card-subtitle class="ion-text-center">Create an Account</ion-card-subtitle>
+          </ion-card-header>
+          <div padding>
+            <!-- <div class="container" (click)="selectImage()">
+              <img *ngIf="image==undefined" src="assets/images/user.png" alt="Avatar" class="image" style="width:100%">
+
+                <img *ngIf="image" [src]="image" alt="Avatar" class="image custom" style="width:100%">
+              <div class="middle">
+                <div class="text"><ion-icon name="create"></ion-icon></div>
+              </div>
+            </div>
+             -->
+              <ion-item>
+                  <ion-input name="fname" type="text" placeholder="First Name" required ngModel></ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-input  name="lname" type="text" placeholder="Last Name" required ngModel></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-input  name="email" type="email" placeholder="Enter Email" required ngModel></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-input name="mobile" type="text" placeholder="Phone" required ngModel></ion-input>
+                </ion-item>
+                <ion-item>
+                  <span><ion-icon style="color:#888" size="medium" name="calendar"></ion-icon></span>
+                    <ion-datetime name="dob" ngModel displayFormat="DD MMMM YYYY" max="2020-12-12"  placeholder="Date of birth"></ion-datetime>
+                  </ion-item>
+                <ion-item>
+                  <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
+                </ion-item>
+                <ion-item>
+                <ion-input name="cpassword" type="password" placeholder="Confirm password" ngModel required></ion-input>
+              </ion-item>
+          </div>
+          <div padding>
+            <ion-button size="medium" type="submit" expand="block">Register</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </form>
+
+        <p text-center>Already have an account ?</p>
+<ion-button expand="full" (click)="regloginClick()" color="success">Login</ion-button>
+
+</ion-content>

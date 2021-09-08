@@ -1,0 +1,132 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button fill="clear" (click)="exitEvent()"><ion-icon size="medium" name="exit"></ion-icon></ion-button>
+    </ion-buttons>
+    <ion-title>Dashboard</ion-title>
+  </ion-toolbar>
+  </ion-header>
+
+<ion-content *ngIf="pharmacy.pharmacy_name">
+  <ion-card class='logo'>
+    <img src={{pharmacy.logo}}>
+  </ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+          <ion-card (click)="menuClick('fill')" color="secondary">
+              <ion-card-header>
+                <ion-card-title class="ion-text-center"><div class="icon-img"><img src="assets/images/icon/prescription.png" alt=""></div></ion-card-title>
+                <ion-card-subtitle class="ion-text-center">New Rx</ion-card-subtitle>
+              </ion-card-header>
+          </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card (click)="menuClick('refill')" color="secondary">
+            <ion-card-header>
+              <ion-card-title class="ion-text-center"><div class="icon-img"><img src="assets/images/icon/refilrx.png" alt=""></div></ion-card-title>
+              <ion-card-subtitle class="ion-text-center">Refill Rx</ion-card-subtitle>
+            </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card (click)="menuClick('patients')" color="secondary">
+            <ion-card-header>
+              <ion-card-title class="ion-text-center"><div class="icon-img"><img src="assets/images/icon/patient.png" alt=""></div></ion-card-title>
+              <ion-card-subtitle class="ion-text-center">Add Patient</ion-card-subtitle>
+            </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+
+
+    <ion-row>
+      <ion-col>
+        <ion-card (click)="menuClick('transfer')" color="secondary">
+            <ion-card-header>
+              <ion-card-title class="ion-text-center"><div class="icon-img"><img src="assets/images/icon/transfer.png" alt=""></div></ion-card-title>
+              <ion-card-subtitle class="ion-text-center">Transfer Rx</ion-card-subtitle>
+            </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card (click)="menuClick('map')" color="secondary">
+            <ion-card-header>
+              <ion-card-title class="ion-text-center"><div class="icon-img"><img src="assets/images/icon/locations.png" alt=""></div></ion-card-title>
+              <ion-card-subtitle class="ion-text-center">Locations</ion-card-subtitle>
+            </ion-card-header>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card (click)="menuClick('chat')" color="secondary">
+            <ion-card-header>
+              <ion-card-title class="ion-text-center"><div class="icon-img"><img src="assets/images/icon/healthcare-and-medical.png" alt=""></div></ion-card-title>
+              <ion-card-subtitle class="ion-text-center">Consultations</ion-card-subtitle>
+            </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col>
+        <ion-card (click)="menuClick('consultation')" color="secondary">
+            <ion-card-header>
+              <ion-card-title class="ion-text-center"><div class="icon-img"><img src="assets/images/icon/health.png" alt=""></div></ion-card-title>
+              <ion-card-subtitle class="ion-text-center">Book an Appointment</ion-card-subtitle>
+            </ion-card-header>
+        </ion-card>
+      </ion-col>
+
+      <ion-col>
+        <ion-card (click)="menuClick('deal')" color="secondary">
+            <ion-card-header>
+              <ion-card-title class="ion-text-center"><div class="icon-img"><img src="assets/images/icon/agreement.png" alt=""></div></ion-card-title>
+              <ion-card-subtitle class="ion-text-center">Deals</ion-card-subtitle>
+            </ion-card-header>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
+  <div class="hobdy-bg">
+    <div class="pp-bg">
+      <img src="assets/images/bg-1.png" alt="">
+    </div>
+    
+  </div>
+</ion-content>
+<ion-tab-bar color="primary" slot="bottom">
+  <ion-tab-button (click)="actionSheet('home')">
+    <ion-label>Home</ion-label>
+    <ion-icon name="home"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button (click)="actionSheet('call')">
+    <ion-label>Call</ion-label>
+    <ion-icon name="call"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button  (click)="actionSheet('email')">
+    <ion-label>Email</ion-label>
+    <ion-icon name="mail"></ion-icon>
+  </ion-tab-button>
+  <ion-tab-button (click)="actionSheet('link')">
+    <ion-label>Website</ion-label>
+    <ion-icon name="globe"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button (click)="actionSheet('info')">
+    <ion-label>Info</ion-label>
+    <ion-icon name="information-circle-outline"></ion-icon>
+  </ion-tab-button>
+</ion-tab-bar>
+
+
+
+

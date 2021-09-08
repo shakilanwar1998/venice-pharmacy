@@ -1,0 +1,186 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header (click)="toggleDetails('profile')" class="title" color="secondary">
+      <ion-card-subtitle class="ion-text-center">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="3">
+              <ion-icon name="person" size="default"></ion-icon>
+            </ion-col>
+            <ion-col size="7">
+              <label>Update Profile</label>
+            </ion-col>
+            <ion-col size="2">
+              <ion-icon name="{{profile.icon}}" size="default"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content *ngIf="profile.showDetails">
+      <form #form="ngForm" (ngSubmit)="updateProfile(form)" method="post">
+        <div padding>
+          <ion-item>
+            <ion-label position="stacked">Full Name</ion-label>
+              <ion-input name="update_name" type="text"[(ngModel)]="update_name" value="{{userdata.name}}"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Birth Date</ion-label>
+            <ion-datetime name="update_dob" [(ngModel)]="update_dob" displayFormat="DD MMMM YYYY" max="2025-12-12" value="{{userdata.dob}}"></ion-datetime>
+          </ion-item>
+        </div>
+
+        <div padding>
+          <ion-button size="default" type="submit" expand="block">Submit</ion-button>
+        </div>
+      </form>
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header (click)="toggleDetails('password')" class="title" color="secondary">
+      <ion-card-subtitle class="ion-text-center">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="3">
+              <ion-icon name="finger-print" size="default"></ion-icon>
+            </ion-col>
+            <ion-col size="7">
+              <label>Change Password</label>
+            </ion-col>
+            <ion-col size="2">
+              <ion-icon name="{{password.icon}}" size="default"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content *ngIf="password.showDetails">
+      <form #form="ngForm" (ngSubmit)="changePassword(form)" method="post">
+        <div padding>
+          <ion-item>
+            <ion-label position="stacked">New Password</ion-label>
+              <ion-input name="password" type="password" required ngModel></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Confirm Password</ion-label>
+              <ion-input name="c_password" type="password" required ngModel></ion-input>
+          </ion-item>
+        </div>
+
+        <div padding>
+          <ion-button size="default" type="submit" expand="block">Submit</ion-button>
+        </div>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header (click)="toggleDetails('email')" class="title" color="secondary">
+      <ion-card-subtitle class="ion-text-center">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="3">
+              <ion-icon name="mail" size="default"></ion-icon>
+            </ion-col>
+            <ion-col size="7">
+              <label>Change Email</label>
+            </ion-col>
+            <ion-col size="2">
+              <ion-icon name="{{email.icon}}" size="default"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content *ngIf="email.showDetails">
+      <form #form="ngForm" (ngSubmit)="changeEmail(form)" method="post">
+        <div padding>
+          <ion-item>
+            <ion-label position="stacked">Email</ion-label>
+              <ion-input name="update_email" type="email" [(ngModel)]="update_email" value="{{userdata.email}}"></ion-input>
+          </ion-item>
+        </div>
+
+        <div padding>
+          <ion-button size="default" type="submit" expand="block">Submit</ion-button>
+        </div>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header (click)="toggleDetails('mobile')" class="title" color="secondary">
+      <ion-card-subtitle class="ion-text-center">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="3">
+              <ion-icon name="call" size="default"></ion-icon>
+            </ion-col>
+            <ion-col size="7">
+              <label>Change Mobile Number</label>
+            </ion-col>
+            <ion-col size="2">
+              <ion-icon name="{{mobile.icon}}" size="default"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content *ngIf="mobile.showDetails">
+      <form #form="ngForm" (ngSubmit)="changeMobile(form)" method="post">
+        <div padding>
+          <ion-item>
+            <ion-label position="stacked">Mobile Number</ion-label>
+              <ion-input type="text" name="update_mobile" [(ngModel)]="update_mobile"></ion-input>
+          </ion-item>
+        </div>
+
+        <div padding>
+          <ion-button size="default" type="submit" expand="block">Submit</ion-button>
+        </div>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
+<ion-tab-bar color="primary" slot="bottom">
+  <ion-tab-button (click)="actionSheet('home')">
+    <ion-label>Home</ion-label>
+    <ion-icon name="home"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button (click)="actionSheet('call')">
+    <ion-label>Call</ion-label>
+    <ion-icon name="call"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button  (click)="actionSheet('email')">
+    <ion-label>Email</ion-label>
+    <ion-icon name="mail"></ion-icon>
+  </ion-tab-button>
+  <ion-tab-button (click)="actionSheet('link')">
+    <ion-label>Website</ion-label>
+    <ion-icon name="globe"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button (click)="actionSheet('info')">
+    <ion-label>Info</ion-label>
+    <ion-icon name="information-circle-outline"></ion-icon>
+  </ion-tab-button>
+</ion-tab-bar>

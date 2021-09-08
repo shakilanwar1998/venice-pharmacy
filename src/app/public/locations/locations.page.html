@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-toolbar color='primary'>
+      <ion-buttons slot="end">
+        <ion-button fill="clear" (click)="exitEvent()"><ion-icon size="medium" name="exit"></ion-icon></ion-button>
+      </ion-buttons>
+      <ion-title>Home</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+  <div class="ion-text-center title">
+    <h3 class="pselect-title">Choose a Pharmacy</h3>
+  </div>
+  <ion-list>
+    <ion-card class="single-location-card" (click)="cardClick(pharma.id,pharma.pharmacy_name,pharma.logo)" color="primary" *ngFor="let pharma of pharmacy; index as ph">
+      <div class="location-card">
+        <img src={{pharma.logo}}>
+        <h5><b>{{pharma.pharmacy_name}}</b></h5>
+        <span>({{pharma.location}})</span>
+      </div>
+    </ion-card>
+  </ion-list>
+
+
+  <div class="lobdy-bg">
+    <div class="pp-bg">
+      <img src="assets/images/bg-1.png" alt="">
+    </div>
+  </div>
+</ion-content>
+
+
+

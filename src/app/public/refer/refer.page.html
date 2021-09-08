@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar color='primary'>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Refer Friends</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header class="title" color="secondary">
+      <ion-card-subtitle class="ion-text-center">Refer a friend</ion-card-subtitle>
+    </ion-card-header>
+
+      <ion-card-content>
+          <div class="referral">
+            <h2 class="ion-text-center">Referral Code</h2>
+            <div class="referral">
+              <h1 *ngIf="code.code" class="ion-text-center"><b>{{code.code}}</b></h1>
+            </div>
+
+            <div class="referral">
+              <h1 class="ion-text-center"><ion-button (click)="share()"><ion-icon name="share"></ion-icon> Share</ion-button></h1>
+            </div>
+          </div>
+      </ion-card-content>
+  </ion-card>
+
+
+  <ion-card class="card">
+    <ion-card-header class="title" color="secondary">
+      <ion-card-subtitle class="ion-text-center">Enter Referral Code</ion-card-subtitle>
+    </ion-card-header>
+
+      <ion-card-content>
+        <form #form="ngForm" (ngSubmit)="submitCode(form)" method="post">
+          <div class="referral">
+            <h3 class="ion-text-center"><span>*</span> Enter your friend's referral code here</h3>
+            <div class="referral">
+              <ion-item>
+                <ion-label position="stacked">Referral Code</ion-label>
+                <ion-input ngModel name="code"></ion-input>
+              </ion-item>
+            </div>
+
+            <div class="referral">
+              <h1 class="ion-text-center"><ion-button Type="submit">Get Discount</ion-button></h1>
+            </div>
+
+          </div>
+          </form>
+      </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
+<ion-tab-bar color="primary" slot="bottom">
+  <ion-tab-button (click)="actionSheet('home')">
+    <ion-label>Home</ion-label>
+    <ion-icon name="home"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button (click)="actionSheet('call')">
+    <ion-label>Call</ion-label>
+    <ion-icon name="call"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button  (click)="actionSheet('email')">
+    <ion-label>Email</ion-label>
+    <ion-icon name="mail"></ion-icon>
+  </ion-tab-button>
+  <ion-tab-button (click)="actionSheet('link')">
+    <ion-label>Website</ion-label>
+    <ion-icon name="globe"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button (click)="actionSheet('info')">
+    <ion-label>Info</ion-label>
+    <ion-icon name="information-circle-outline"></ion-icon>
+  </ion-tab-button>
+</ion-tab-bar>

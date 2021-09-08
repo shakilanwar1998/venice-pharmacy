@@ -1,0 +1,114 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button fill="clear" size='default' (click)="dismiss()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  </ion-header>
+
+
+<ion-content padding>
+
+    <ion-card class='logo_card'>
+      <img class="logo_image" src={{logo}}>
+    </ion-card>
+
+    <ion-card class='reg-card'>
+      <ion-card-header color="secondary" class="title">
+          <ion-card-subtitle class="ion-text-center">Add New Patient</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-row justify-content-center>
+          <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+            <form #form="ngForm" (ngSubmit)="submitForm(form)" method="post">
+            <div padding>
+                <div class="container" (click)="selectImage()">
+                  <img *ngIf="image==undefined" src="assets/images/user.png" alt="Avatar" class="image" style="width:100%">
+
+                    <img *ngIf="image" [src]="image" alt="Avatar" class="image custom" style="width:100%">
+                  <div class="middle">
+                    <div class="text"><ion-icon name="create"></ion-icon></div>
+                  </div>
+                </div>
+                <ion-item>
+                    <ion-input ngModel name="fname" type="text" placeholder="First Name"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-input ngModel  name="lname" type="text" placeholder="Last Name"></ion-input>
+                  </ion-item>
+
+                  <ion-item>
+                    <span><ion-icon style="color:#888" size="medium" name="calendar"></ion-icon></span>
+                      <ion-datetime name="dob" ngModel displayFormat="DD MMMM YYYY" max="2020-12-12"  placeholder="Date of birth"></ion-datetime>
+                    </ion-item>
+
+
+                    <ion-item>
+                      <ion-input ngModel name="mobile" type="text" placeholder="Phone"></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-input ngModel name="health_card" type="text" placeholder="Health Card No"></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-input ngModel name="street" type="text" placeholder="Street Address"></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-input ngModel name="city" type="text" placeholder="City"></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-input ngModel name="province" type="text" placeholder="Province"></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-input ngModel name="country" type="text" placeholder="Country"></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-input ngModel name="postal" type="text" placeholder="Postal Code"></ion-input>
+                    </ion-item>
+
+                  <ion-input ngModel type="hidden" name="app_user_id" [value]='1'></ion-input>
+
+            </div>
+            <div padding>
+              <ion-button size="medium" type="submit" expand="block">Add</ion-button>
+            </div>
+            </form>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+</ion-content>
+
+<ion-tab-bar color="primary" slot="bottom">
+  <ion-tab-button (click)="actionSheet('home')">
+    <ion-label>Home</ion-label>
+    <ion-icon name="home"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button (click)="actionSheet('call')">
+    <ion-label>Call</ion-label>
+    <ion-icon name="call"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button  (click)="actionSheet('email')">
+    <ion-label>Email</ion-label>
+    <ion-icon name="mail"></ion-icon>
+  </ion-tab-button>
+  <ion-tab-button (click)="actionSheet('link')">
+    <ion-label>Website</ion-label>
+    <ion-icon name="globe"></ion-icon>
+  </ion-tab-button>
+
+  <ion-tab-button (click)="actionSheet('info')">
+    <ion-label>Info</ion-label>
+    <ion-icon name="information-circle-outline"></ion-icon>
+  </ion-tab-button>
+</ion-tab-bar>

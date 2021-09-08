@@ -1,0 +1,51 @@
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      <div class="title-block">
+        <ion-icon name="chatboxes" class="title-icon"></ion-icon>
+        <ion-text class="title-text">Conversation</ion-text>
+      </div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding-vertical fullscreen>
+  <div id="chat-parent" class="bg-image" [ngClass]="{ 'bg-image-X': phone_model=='iPhone X'}">
+    <div id="chat-container">
+      <ion-row *ngFor="let conv of messages; let i = index;" class="full no-padding">
+        <ion-col class="no-padding chat-row" [ngClass]="{ 'reverse': conv.message_from!='admin'}">
+          <div class="avatar-parent">
+            <div class="avatar-border"></div>
+            
+          </div>
+          <div [ngClass]="{ 'name-row-parent-right': conv.sender,'name-row-parent-left': !conv.sender}">
+            <div class="no-padding" [ngClass]="{ 'name-row-right': conv.message_from!='admin','name-row-left': conv.message_from=='admin'}">
+              <span *ngIf="conv.message_from!='admin'">{{conv.name}}</span>
+              <span *ngIf="conv.message_from=='admin'">Admin</span>
+            </div>
+            <div class="no-padding" [ngClass]="{ 'message-row-right': conv.message_from!='admin','message-row-left': conv.message_from=='admin'}">
+              <ion-text no-margin class="text">{{conv.text}}</ion-text>
+            </div>
+          </div>
+
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>
+<ion-footer translucent [ngClass]="{ 'custom-footer': phone_model=='iPhone X'}">
+  <ion-row class="input-position" [ngClass]="{ 'custom-footer-row': phone_model=='iPhone X'}">
+    <ion-col size="9">
+      <ion-input class="input restrict" type="text" placeholder="Type a message" [(ngModel)]="message" padding-start></ion-input>
+    </ion-col>
+    <ion-col size="3">
+      <ion-button shape="round" class="send-button" color="primary" (click)="sendMessage()">
+        <ion-text color="light">SEND</ion-text>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>
